@@ -1,0 +1,14 @@
+.flex {
+    display:flex;
+}
+
+.grid {
+    width: 1rem;
+    height: 1rem;
+    outline: 1px solid black;
+
+}
+
+.grid:hover {
+    background-color: black;
+}
