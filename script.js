@@ -13,3 +13,11 @@ grid.forEach((content) => {
     
     })
 
+const hover = document.querySelectorAll('.grid')
+hover.forEach((element) => {
+    element.addEventListener('mouseenter', ()=>{
+        element.classList.toggle('color')
+    })
+        
+    
+})
