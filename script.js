@@ -1,50 +1,44 @@
-const gridSize = document.querySelector('.gridSize');
-let x = 0;
-let grid = 0;
-gridSize.addEventListener('click', ()=>{
-    if (x==0){    
-        x = prompt('grid size');
-    } else {
-        location.reload();
-    }
 
-//main grid
-    const grid = document.querySelectorAll('.container');
-    grid.forEach((content) => {
-        if (x > 32) {
-            alert('too many lines');
-            location.reload();
-        } else if (x==''||x==null){
-            x=32;
-        }
 
-        for (let i =1;i<=x;i++){
-            const lol = document.createElement('div');
-            lol.classList.toggle('flex');
-            for (let j =1;j<=x;j++){
-                const lol2 = document.createElement('div');
-                lol2.classList.toggle('grid')
-                lol.appendChild(lol2);
-                content.appendChild(lol);
-            }}
+const color = document.querySelector('.color');
 
-        // hover and clear
+const range = document.querySelector('.range');
 
-            const hover = document.querySelectorAll('.grid')
-            const clear = document.querySelector('.clear');
-            hover.forEach((element) => {
-                element.addEventListener('mouseenter', ()=>{
-                    element.classList.add('color');
-                element.addEventListener('click', ()=>{
-                    element.classList.toggle('color2')
-                })
-                clear.addEventListener('click', () => {
-                    element.classList.remove('color')
-                    })
-                })
-            })
-            
-            
+const grid = document.querySelector('.grid');
+
+const clear = document.querySelector('.clear');
+
+let ink = 'black'
+let gridNum = 0;
+range.addEventListener('change', ()=>{
+    if (gridNum == 0){
+        gridNum = range.value;
         
-        })
-    })
+
+        for (let i = 0; i < gridNum; i++){
+            const element1 = document.createElement('div');
+            element1.setAttribute('style', 'display:flex;max-width:32rem;min-width:32rem;align-items:center;justify-content:center;');
+            for (let j= 0; j < gridNum; j++){
+                const element2 = document.createElement('div');
+                element2.setAttribute('style', 'width:1rem;height:1rem;outline:1px black solid');
+                
+                color.addEventListener('change', ()=>{
+                    ink = color.value;
+                })
+
+                element2.addEventListener('mouseenter', ()=>{
+                    element2.style.backgroundColor = ink;
+                })
+
+                clear.addEventListener('click', ()=>{
+                    element2.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                })
+                
+                element1.appendChild(element2)
+                grid.appendChild(element1)
+            }}}
+        else {
+            location.reload();
+        }}
+
+)
