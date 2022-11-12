@@ -14,13 +14,16 @@ gridSize.addEventListener('click', ()=>{
         if (x > 32) {
             alert('too many lines');
             location.reload();
+        } else if (x==''||x==null){
+            x=32;
         }
+
         for (let i =1;i<=x;i++){
             const lol = document.createElement('div');
             lol.classList.toggle('flex');
             for (let j =1;j<=x;j++){
                 const lol2 = document.createElement('div');
-                lol2.classList.toggle('grid');
+                lol2.classList.toggle('grid')
                 lol.appendChild(lol2);
                 content.appendChild(lol);
             }}
@@ -32,6 +35,9 @@ gridSize.addEventListener('click', ()=>{
             hover.forEach((element) => {
                 element.addEventListener('mouseenter', ()=>{
                     element.classList.add('color');
+                element.addEventListener('click', ()=>{
+                    element.classList.toggle('color2')
+                })
                 clear.addEventListener('click', () => {
                     element.classList.remove('color')
                     })
