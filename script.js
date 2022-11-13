@@ -8,11 +8,14 @@ const grid = document.querySelector('.grid');
 
 const clear = document.querySelector('.clear');
 
+grid.setAttribute('style', 'width:500px;height500px')
+
 let ink = 'black'
 let gridNum = 0;
 range.addEventListener('change', ()=>{
     if (gridNum == 0){
         gridNum = range.value;
+        let z = 500/range.value;
         
 
         for (let i = 0; i < gridNum; i++){
@@ -20,7 +23,7 @@ range.addEventListener('change', ()=>{
             element1.setAttribute('style', 'display:flex;max-width:32rem;min-width:32rem;align-items:center;justify-content:center;');
             for (let j= 0; j < gridNum; j++){
                 const element2 = document.createElement('div');
-                element2.setAttribute('style', 'width:1rem;height:1rem;outline:1px black solid');
+                element2.setAttribute('style', `width:${z}px;height:${z}px;outline:1px black solid`);
                 
                 color.addEventListener('change', ()=>{
                     ink = color.value;
@@ -36,7 +39,14 @@ range.addEventListener('change', ()=>{
                 
                 element1.appendChild(element2)
                 grid.appendChild(element1)
-            }}}
+
+
+            }}
+           
+            }
+
+
+
         else {
             location.reload();
         }}
